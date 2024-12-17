@@ -80,7 +80,7 @@ const initGame = (button, clickedLetter) => {
 
 };
 
-for (let i = 97; i < 122; i++) {
+for (let i = 97; i < 123; i++) {
     const button = document.createElement("button");
     button.innerText = String.fromCharCode(i);
     keyboardDiv.appendChild(button);
