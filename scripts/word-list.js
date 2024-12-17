@@ -1,5 +1,5 @@
 const wordList = [
-    { word: "johnwick", hint: "Assassin" },
+    { word: "johnwick", hint: "The nick name of one of the CS teacher" },
     { word: "apple", hint: "Fruit" },
     { word: "eiffel", hint: "Paris" },
     { word: "tiger", hint: "Predator" },

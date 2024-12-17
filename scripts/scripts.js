@@ -4,6 +4,13 @@ const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
 const gameModel = document.querySelector(".game-model");
 const playAgainBtn = document.querySelector(".play-again ");
+
+//audio
+const correctAudio = new Audio('mixkit-hard-single-key-press-in-a-laptop-2542.wav');
+const incorrectAudio = new Audio('mixkit-system-beep-buzzer-fail-2964.wav');
+const winAudio = new Audio('mixkit-fantasy-game-success-notification-270.wav');
+const loseAudio = new Audio('mixkit-cartoon-failure-piano-473.wav');
+
 let currentWord, correctLetters,wrongGuessCount;
 const maxGuesses = 6;
 const resetGame =() => {
@@ -30,13 +37,20 @@ const gameOver = (isVictory) => {
         gameModel.querySelector("h4").innerText = `${isVictory ?'Congrats!': 'Game Over!'}`;
         gameModel.querySelector("p").innerHTML = `${modelText} <b> ${currentWord} </b> `;
         gameModel.classList.add("show");
+
+        if (isVictory) {
+            winAudio.play();  // Play the win sound if the player wins
+        } else {
+            loseAudio.play();  // Play the lose sound if the player loses
+        }
 },300);
 
 }
 
 const initGame = (button, clickedLetter) => {
     if (currentWord.includes(clickedLetter)) {
-        
+        correctAudio.play();
+         
         [...currentWord].forEach((letter, index) => {
             if (letter === clickedLetter) {
                 correctLetters.push(letter);
@@ -47,6 +61,7 @@ const initGame = (button, clickedLetter) => {
             }
         });
     } else {
+        incorrectAudio.play();
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.png`;
     }
