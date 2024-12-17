@@ -5,6 +5,9 @@ const keyboardDiv = document.querySelector(".keyboard");
 const gameModel = document.querySelector(".game-model");
 const playAgainBtn = document.querySelector(".play-again ");
 
+let score = 0; // Initialize score
+const scoreCounter = document.getElementById("score-counter"); // Get the score counter element
+
 //audio
 const correctAudio = new Audio('mixkit-hard-single-key-press-in-a-laptop-2542.wav');
 const incorrectAudio = new Audio('mixkit-system-beep-buzzer-fail-2964.wav');
@@ -13,6 +16,8 @@ const loseAudio = new Audio('mixkit-cartoon-failure-piano-473.wav');
 
 let currentWord, correctLetters,wrongGuessCount;
 const maxGuesses = 6;
+
+
 const resetGame =() => {
     correctLetters = [];
     wrongGuessCount = 0;
@@ -39,7 +44,10 @@ const gameOver = (isVictory) => {
         gameModel.classList.add("show");
 
         if (isVictory) {
+            score += 1;  // Add points, adjust based on your preference
+            scoreCounter.innerText = score;  // Update score display
             winAudio.play();  // Play the win sound if the player wins
+
         } else {
             loseAudio.play();  // Play the lose sound if the player loses
         }
@@ -50,7 +58,6 @@ const gameOver = (isVictory) => {
 const initGame = (button, clickedLetter) => {
     if (currentWord.includes(clickedLetter)) {
         correctAudio.play();
-         
         [...currentWord].forEach((letter, index) => {
             if (letter === clickedLetter) {
                 correctLetters.push(letter);
