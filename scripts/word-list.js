@@ -78,7 +78,6 @@ const wordList = [
     { word: "database", hint: "Storage" },
     { word: "cloud", hint: "Online storage" },
     { word: "encryption", hint: "Data security" },
-    { word: "AI", hint: "Artificial Intelligence" },
     { word: "machinelearning", hint: "Learning from data" },
     { word: "bigdata", hint: "Large datasets" },
     { word: "cybersecurity", hint: "Protecting systems" },

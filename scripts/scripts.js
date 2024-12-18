@@ -5,8 +5,8 @@ const keyboardDiv = document.querySelector(".keyboard");
 const gameModel = document.querySelector(".game-model");
 const playAgainBtn = document.querySelector(".play-again ");
 
-let score = 0; // Initialize score
-const scoreCounter = document.getElementById("score-counter"); // Get the score counter element
+let score = 0; 
+const scoreCounter = document.getElementById("score-counter"); 
 
 //audio
 const correctAudio = new Audio('mixkit-hard-single-key-press-in-a-laptop-2542.wav');
@@ -44,12 +44,12 @@ const gameOver = (isVictory) => {
         gameModel.classList.add("show");
 
         if (isVictory) {
-            score += 1;  // Add points, adjust based on your preference
-            scoreCounter.innerText = score;  // Update score display
-            winAudio.play();  // Play the win sound if the player wins
+            score += 1;  
+            scoreCounter.innerText = score; 
+            winAudio.play();  
 
         } else {
-            loseAudio.play();  // Play the lose sound if the player loses
+            loseAudio.play();
         }
 },300);
 
@@ -85,10 +85,9 @@ for (let i = 97; i < 123; i++) {
     button.innerText = String.fromCharCode(i);
     keyboardDiv.appendChild(button);
 
-    // Add event listener for the button click
+
     button.addEventListener("click", (e) => initGame(e.target, String.fromCharCode(i)));
 }
 
-// Initialize the game with a random word
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);
